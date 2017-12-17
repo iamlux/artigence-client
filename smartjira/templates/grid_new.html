@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Thinking JIRA in Predictive way</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css">
+    <style>
+        .table-container{
+            width: 70%;
+            margin: 0 auto;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+        <h4 style="text-align: center;">Thinking JIRA in Predictive way</h4>
+    </header>
+    <hr/>
+    <p><b>Best Web Developer: </b><span class="web"></span></p>
+    <p><b>Best Android Developer: </b><span class="android"></span></p>
+    <p><b>Best IOS Developer: </b><span class="ios"></span></p>
+    <p><b>Best Designer: </b><span class="design"></span></p>
+    <div class="table-container">
+         <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
+           <thead>
+                <tr>
+                    <th>Task Id</th>
+                    <th>Past Developer</th>
+                    <th>Suggested Developer</th>
+                    <th>Current Time</th>
+                    <th>Estimated Time</th>
+                </tr>
+            </thead>
+    </table> 
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+        $(document).ready(function() {
+            var task = getUrlParameter('project_id');
+            $.ajax({
+              url: "http://192.168.2.117/"+task+"/statistics",
+              cache: false,
+              success: function(data){
+                console.log(data.component_dev.Broadcaster.join(','));
+               // var statistics = data.
+                $('.web').html(data.component_dev.Broadcaster.join(','));
+                $('.android').html();
+                $('.ios').html();
+                $('.design').html();
+              }
+            });
+                $('#example').DataTable( {
+                    "ajax": "http://192.168.2.117/"+task+"/tasks",
+                    "columns": [
+                        { "data": "key" },
+                        { "data": "c_dev" },
+                        { "data": "s_dev" },
+                        { "data": "c_time" },
+                        { "data": "e_time" },
+                    ]
+                } );
+    } );
+    </script>
+  </body>
+</html>

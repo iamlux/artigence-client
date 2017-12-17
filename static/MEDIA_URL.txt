@@ -1,0 +1,31 @@
+SETTINGS.PY
+
+IN TEMPLATES
+
+'django.template.context_processors.media',
+
+'django.template.context_processors.static',
+
+MEDIA_URL = "/site_media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+URLS.PY
+
+from django.conf import settings
+
+import django.views.static as django_static_view
+
+# Media URL
+
+url(r'^site_media/(?P<path>.*)$', django_static_view.serve, {'document_root': settings.MEDIA_ROOT }),
+
+url(r'^static/admin/(?P<path>.*)$', django_static_view.serve, {'document_root': settings.STATIC_ROOT }),
+
+BASE TEMPLATES.HTML
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/custom.css">
+
+<link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
