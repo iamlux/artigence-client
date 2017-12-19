@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e97851-327b-4e9c-8deb-f872d78f38d1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smartjira/templates/task-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/basic/urls.py" afterPath="$PROJECT_DIR$/basic/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smartjira/templates/grid_new.html" afterPath="$PROJECT_DIR$/smartjira/templates/grid_new.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smartjira/templates/index_new.html" afterPath="$PROJECT_DIR$/smartjira/templates/index_new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smartjira/views.py" afterPath="$PROJECT_DIR$/smartjira/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/fun.js" afterPath="$PROJECT_DIR$/static/js/fun.js" />
     </list>
     <ignored path="basic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +24,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="grid_new.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="grid_new.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smartjira/templates/grid_new.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
@@ -71,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index_new.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index_new.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smartjira/templates/index_new.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="280">
+              <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -121,8 +116,8 @@
         <option value="$PROJECT_DIR$/smartjira/views.py" />
         <option value="$PROJECT_DIR$/static/js/fun.js" />
         <option value="$PROJECT_DIR$/smartjira/templates/task-detail.html" />
-        <option value="$PROJECT_DIR$/smartjira/templates/index_new.html" />
         <option value="$PROJECT_DIR$/smartjira/templates/grid_new.html" />
+        <option value="$PROJECT_DIR$/smartjira/templates/index_new.html" />
       </list>
     </option>
   </component>
@@ -424,7 +419,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3306189" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0732899" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -503,14 +498,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smartjira/templates/index_new.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smartjira/templates/task-detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -523,6 +510,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smartjira/templates/index_new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
           <folding />
         </state>
       </provider>
