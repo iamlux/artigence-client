@@ -57,4 +57,7 @@ $('document').ready(function() {
   $('#mc-embedded-subscribe').click(function(){
     window.location = '/list?project_id=' + $('#mce-EMAIL').val();
   });
+  $('#mc-embedded-task').click(function(){
+    window.location = '/task?project_id=' + $('#mce-task').val();
+  });
 });

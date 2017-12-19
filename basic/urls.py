@@ -13,7 +13,8 @@ urlpatterns = (
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home, name='home'),
-    url(r'^list', list, name='list')
+    url(r'^list', list, name='list'),
+    url(r'^task', task, name='task')
 )
 
 

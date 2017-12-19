@@ -1,42 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Thinking JIRA in Predictive way</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
     <style>
         .table-container{
             width: 70%;
             margin: 0 auto;
         }
+
+        .container{
+        padding: 0 5rem;
+        }
+        .table-container{
+        width: 100%;
+        }
+        .output{
+        padding: 20px;
+    background: #efefef;
+    border-radius: 4px;
+    margin-top: 2rem;
+        }
+        .output>p>b{
+        width: 30%;
+        display: inline-block;
+
+        }
+        header{
+        text-align: center;
+         padding: 20px 0;
+         margin: 0;
+    font-size: 2rem;
+        color: #e55154;
+             box-shadow: 0 0 12px 0 #ccc;
+        }
+        h1 {
+        font-family: "Lato";
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+      .mdl-data-table th{
+        font-size: 15px;
+        color: #464040;
+        }
+        .mdl-data-table {
+            box-shadow: 0 0 7px 0 #ccc;
+    border-radius: 6px;
+    }
+    .input-sm{
+    outline: none;
+    background: #fbfbfb;
+    height: 30px;
+    border: 1px solid #cccc;
+    margin: 0 5px;
+}
+thead th{
+background: #e6e6e6;
+}
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    height: 40px;
+    border-radius: 3px;
+}
+.table-container{
+margin-bottom: 50px;
+}
+h1 a {
+font-weight: 600;
+    text-decoration: none;
+}
+
     </style>
-  </head>
-  <body>
-    <header>
-        <h4 style="text-align: center;">Thinking JIRA in Predictive way</h4>
-    </header>
-    <hr/>
+</head>
+<body>
+<header>
+    <h1><a href="/">Smart Jira</a></h1>
+</header>
+<div class="container">
     <div class="output"></div>
     <div class="table-container">
-         <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
-           <thead>
-                <tr>
-                    <th>Task Id</th>
-                    <th>Past Developer</th>
-                    <th>Suggested Developer</th>
-                    <th>Current Time</th>
-                    <th>Estimated Time</th>
-                </tr>
+        <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Task Id</th>
+                <th>Past Developer</th>
+                <th>Suggested Developer</th>
+                <th>Original Time</th>
+                <th>Estimated Time</th>
+            </tr>
             </thead>
-    </table> 
+        </table>
     </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
-    <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
+<script>
         var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -52,9 +117,10 @@
     }
 };
         $(document).ready(function() {
+function timeConversion(millisec) { var seconds = (millisec / 1000).toFixed(1); var minutes = (millisec / (1000 * 60)).toFixed(1); var hours = (millisec / (1000 * 60 * 60)).toFixed(1); var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1); if (seconds < 60) { return seconds + " Sec"; } else if (minutes < 60) { return minutes + " Min"; } else if (hours < 24) { return hours + " Hrs"; } else { return days + " Days" } };
             var task = getUrlParameter('project_id');
             $.ajax({
-              url: "http://0.0.0.0:7777/project/"+task+"/statistics",
+              url: "http://192.168.2.117:7777/project/"+task+"/statistics",
               cache: false,
               success: function(data){
 
@@ -65,16 +131,41 @@
               }
             });
                 $('#example').DataTable( {
-                    "ajax": "http://0.0.0.0:7777/project/"+task+"/tasks",
+                    "ajax": "http://192.168.2.117:7777/project/"+task+"/tasks",
                     "columns": [
                         { "data": "key" },
                         { "data": "c_dev" },
                         { "data": "s_dev" },
                         { "data": "c_time" },
                         { "data": "e_time" },
+                    ],
+                    "columnDefs": [
+                        {
+                            "render": function ( data, type, row ) {
+                                var milliseconds = data;
+                                var mydate=new Date(milliseconds);
+                                var humandate= mydate.getUTCHours() + " hours, " + mydate.getUTCMinutes() +" minutes";
+                                var convert = data*1000;
+                                console.log(convert);
+                                return timeConversion(convert);
+                            },
+                            "targets": 3
+                        },
+                        {
+                            "render": function ( data, type, row ) {
+                                var milliseconds = data;
+                                var mydate=new Date(milliseconds);
+                                var humandate= mydate.getUTCHours() + " hours, " + mydate.getUTCMinutes() +" minutes";
+                                var convert = data*1000;
+                                console.log(convert);
+                                return timeConversion(convert);
+                            },
+                            "targets": 4
+                        }
                     ]
                 } );
     } );
-    </script>
-  </body>
+
+</script>
+</body>
 </html>

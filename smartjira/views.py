@@ -7,3 +7,6 @@ def home(request):
 
 def list(request):
 	return render(request, 'grid_new.html', locals())
+
+def task(request):
+	return render(request, 'task-detail.html', locals())
