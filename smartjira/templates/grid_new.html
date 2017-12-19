@@ -18,10 +18,7 @@
         <h4 style="text-align: center;">Thinking JIRA in Predictive way</h4>
     </header>
     <hr/>
-    <p><b>Best Web Developer: </b><span class="web"></span></p>
-    <p><b>Best Android Developer: </b><span class="android"></span></p>
-    <p><b>Best IOS Developer: </b><span class="ios"></span></p>
-    <p><b>Best Designer: </b><span class="design"></span></p>
+    <div class="output"></div>
     <div class="table-container">
          <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
            <thead>
@@ -57,19 +54,18 @@
         $(document).ready(function() {
             var task = getUrlParameter('project_id');
             $.ajax({
-              url: "http://192.168.2.117/"+task+"/statistics",
+              url: "http://0.0.0.0:7777/project/"+task+"/statistics",
               cache: false,
               success: function(data){
-                console.log(data.component_dev.Broadcaster.join(','));
-               // var statistics = data.
-                $('.web').html(data.component_dev.Broadcaster.join(','));
-                $('.android').html();
-                $('.ios').html();
-                $('.design').html();
+
+               for (var property in data.data.component_dev) {
+                var form_string = "<p><b>" + property + " : "  + "</b>" + data.data.component_dev[property] + "</p>";
+                $('.output').append(form_string);
+                }
               }
             });
                 $('#example').DataTable( {
-                    "ajax": "http://192.168.2.117/"+task+"/tasks",
+                    "ajax": "http://0.0.0.0:7777/project/"+task+"/tasks",
                     "columns": [
                         { "data": "key" },
                         { "data": "c_dev" },
